@@ -1,0 +1,74 @@
+/**给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
+如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。
+您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
+示例：
+输入：(1 -> 4 -> 3) + (2 -> 2 -> 5)
+输出：3 -> 6 -> 8
+原因：341 + 522 = 368*/
+package com.company;
+public class ListNode {
+    public int data ;
+    public ListNode next;
+    /**加节点*/
+    public void add(int data){
+         ListNode newNode = new ListNode();
+         if (this.data!=0){
+             if (this.next == null){
+                 this.next=newNode;
+                 newNode.add(data);
+             }else {
+                 this.next.add(data);
+             }
+         }else {
+             this.data = data;
+         }
+    }
+    /**打印链表*/
+    public void printf(){
+        System.out.print(this.data);
+        if (this.next!=null){
+            System.out.print("->");
+            this.next.printf();
+        }
+    }
+    /**链表转数字*/
+    public int impl(){
+        int count ;
+        String count1="0";
+        if (this.data!=0){
+            count1 = String.valueOf(data);
+            if (this.next !=null ){
+               count1= this.next.impl()+count1;
+            }
+        }else{
+            count1 = "0";
+        }
+        count = Integer.parseInt(count1);
+        return count;
+    }
+    /**数字转链表*/
+    public  ListNode list(int count){
+        if ((count / 1) % 10!=0){this.add((count / 1) % 10);}else {this.add(0);}
+        if ((count / 10) % 10!=0){this.add((count / 10) % 10);}else {this.add(0);}
+        if ((count / 100) % 10!=0){this.add((count / 100) % 10);}else {this.add(0);}
+        return this;
+    }
+    public static void main(String[] args) {
+        ListNode listNode1 = new ListNode();
+        ListNode listNode2 = new ListNode();
+        ListNode listNode3 = new ListNode();
+        listNode1.add(1);
+        listNode1.add(4);
+        listNode1.add(3);
+        listNode2.add(2);
+        listNode2.add(2);
+        listNode2.add(5);
+        System.out.println("输入: ");
+        listNode1.printf();
+        System.out.print(" + ");
+        listNode2.printf();
+        System.out.println("\n输出 : ");
+        System.out.println((listNode1.impl()+listNode2.impl()));
+        listNode3.list((listNode1.impl()+listNode2.impl())).printf();
+    }
+}
