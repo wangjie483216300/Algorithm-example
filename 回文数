@@ -1,0 +1,25 @@
+/**判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
+        示例 1:
+        输入: 121
+        输出: true
+*/
+import java.util.Scanner;
+public class isPalindrome {
+    public static void main(String[] args) {
+        boolean state = false;
+        Scanner input=new Scanner(System.in);
+        int i = input.nextInt();
+        String j = String.valueOf(i);
+        String[] a = j.split("");
+        for (int q = 0;q<a.length/2;q++){
+            for (int w = a.length-1 ; w > a.length/2; w --){
+                if (a[q].equals(a[w])){
+                    state = true ;
+                }else {
+                    state = false ;
+                }
+            }
+        }
+        System.out.println(state);
+    }
+}
