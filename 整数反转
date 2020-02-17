@@ -1,0 +1,47 @@
+/**给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
+        示例 1:               示例 2:
+        输入: 123             输入: 120
+        输出: 321             输出: 21*/
+import java.util.Scanner;
+public class Reverse {
+    public static int reverse(int x) {
+        String str = "";
+        if (x>0){
+            String[] strings = String.valueOf(x).split("");
+            String[] strings1 = new String[strings.length];
+            for (int i = 0;i<strings.length;i++){
+                strings1[i] = strings[strings.length-i-1];
+            }
+            for (int j = 0 ; j < strings1.length ; j++ ){
+                if (strings1[0]=="0"){
+                    str = str ;
+                }else {
+                    str = str + strings1[j];
+                }
+            }
+        }else {
+            int k = - x ;
+            String[] strings = String.valueOf(k).split("");
+            String[] strings1 = new String[strings.length];
+            for (int i = 0;i<strings.length;i++){
+                strings1[i] = strings[strings.length-i-1];
+            }
+            for (int j = 0 ; j < strings1.length ; j++ ){
+                if (strings1[0]=="0"){
+                    str = str ;
+                }else {
+                    str = str + strings1[j];
+                }
+            }
+        }
+        int i ;
+        if (x>0){i=Integer.parseInt(str);}else {i=0-Integer.parseInt(str);}
+        return i;
+    }
+    public static void main(String[] args) {
+        System.out.print("输入数字为:");
+        Scanner input=new Scanner(System.in);
+        int x = input.nextInt();
+        System.out.println("输出为:"+reverse(x));
+    }
+}
