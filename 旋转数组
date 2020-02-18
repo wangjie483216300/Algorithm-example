@@ -1,0 +1,53 @@
+/**给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。
+        示例 :
+        输入: [1,2,3,4,5,6,7] 和 k = 3
+        输出: [5,6,7,1,2,3,4]
+        解释:
+        向右旋转 1 步: [7,1,2,3,4,5,6]
+        向右旋转 2 步: [6,7,1,2,3,4,5]
+        向右旋转 3 步: [5,6,7,1,2,3,4]*/
+public class Rotate {
+    public static void print(int[] ints){
+        System.out.print("[");
+        for (int i = 0 ; i < ints.length ; i++ ){
+            if (i==ints.length-1){
+                System.out.print(ints[i]+"]");
+            }else {
+                System.out.print(ints[i]+",");
+            }
+        }
+    }
+    public  int[] rotate(int[] nums, int k) {
+        int[] ints = new int[nums.length];
+        int[] ints1 = new int[nums.length];
+        int k1 = k ;
+        int i = 0 ;
+       while (true){
+           ints[i] = nums[nums.length - k1];
+            i = i + 1 ;
+           k1--;
+           if (k1==0){break;}
+       }
+        for (int j = k ; j<nums.length ; j++){
+            ints1[j] = nums[j-k] ;
+        }
+        for (int a = 0 ; a<nums.length ; a++){
+            if (a<k){
+                nums[a]=ints[a];
+            }else {
+                nums[a]=ints1[a];
+            }
+        }
+        return nums;
+    }
+    public static void main(String[] args) {
+        Rotate rotate = new Rotate();
+        int[] nums = new int[]{1,2,3,4,5,6,7,8,9,10};
+        int k = 3 ;
+        System.out.print("输入的数组为:");
+        print(nums);
+        System.out.println("\n输入的k值为:"+k);
+        System.out.print("得到的数组为:");
+        print(rotate.rotate(nums,k));
+    }
+}
