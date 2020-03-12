@@ -1,0 +1,53 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class wxxTest {
+
+
+
+
+
+
+    public static void main(String[] args) {
+        int a=3,b=4,c=5,d=6;
+        int x = (int) (Math.pow(a,3)+Math.pow(b,3)+Math.pow(c,3));
+        int y = (int)Math.pow(d,3);
+        System.out.println(x==y);
+        int m = 0;
+        for (int i=6;i<70;i++){
+            m=m+(int)Math.pow(i,3);
+        }
+        System.out.println(m==(int)Math.pow(180,3));
+        System.out.println("--------------------------------------------------");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("请输入起始数字:");
+        int q = scanner.nextInt();
+        System.out.print("请输入连续正整数的长度:");
+        int w = scanner.nextInt();
+        int e=0;
+        String str="";
+        for (int i=q;i<(q+w);i++){
+            e=e+(int)Math.pow(i,3);
+            str = str+i+"^3"+"+";
+        }
+        str = "等号左边算式为:"+str;
+        System.out.println(str+"\n       值为:"+e);
+        int u=0;
+        for (int j = 0;;j++){
+            u = (int)Math.pow(j,3);
+            if (u==e) {
+                System.out.println("右边算式为:" + j + "^3" + "   值为:" + u);
+                System.out.print("两式比较结果:");
+                System.out.println(e==u);
+                break;
+            }
+            if (j>10000){
+                System.out.println("在10000以内没有右式值!");
+                break;
+            }
+        }
+    }
+
+}
+
